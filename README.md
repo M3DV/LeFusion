@@ -48,6 +48,7 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
    > ✨**Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder. 
 
    ```bash
+   mkdir data
    cd data
    wget https://huggingface.co/datasets/YuheLiuu/LIDC-IDRI/resolve/main/Pathological.tar -O Pathological.tar
    tar -xvf Pathological.tar
