@@ -50,6 +50,8 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
    ```bash
    mkdir data
    cd data
+   mkdir LIDC-IDRI
+   cd LIDC-IDRI
    wget https://huggingface.co/datasets/YuheLiuu/LIDC-IDRI/resolve/main/Pathological.tar -O Pathological.tar
    tar -xvf Pathological.tar
    wget https://huggingface.co/datasets/YuheLiuu/LIDC-IDRI/resolve/main/Normal.tar -O Normal.tar
@@ -81,7 +83,7 @@ Start training:
 test_txt_dir=data/LIDC-IDRI/Pathological/test.txt
 dataset_root_dir=data/LIDC-IDRI/Pathological/Image
 train_num_steps=50001
-python train/train.py dataset.test_txt_dir=$test_txt_dir dataset.root_dir=$dataset_root_dir 
+python train/train.py dataset.test_txt_dir=$test_txt_dir dataset.root_dir=$dataset_root_dir model.train_num_steps=$train_num_steps
 ```
 
 Notably, `data_path` actually refers to the directory location of the corresponding images. Additionally, the corresponding label directory should be placed in the same folder as the image directory and should be named `Mask`.
