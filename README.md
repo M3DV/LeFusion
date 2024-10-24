@@ -66,7 +66,7 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
    We offer the pre-trained  LeFusion Model, which has been trained for 50,001 steps on the LIDC-IDRI dataset. This pre-trained model can be directly used for Inference if you do not want to re-train the LeFusion Model. Simply download it to `LeFusion/LeFusion_model`.
 
    ```bash
-   cd ..
+   cd ../..
    mkdir LeFusion_model
    cd LeFusion_model
    wget https://huggingface.co/YuheLiuu/LeFusion/resolve/main/LIDC_LeFusion_Model/model-50.pt -O model-50.pt
