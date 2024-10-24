@@ -4,7 +4,7 @@ LeFusion: Lesion-Focused Diffusion Model. The top illustrates the training proce
 
 ![lefusion_model](https://github.com/M3DV/LeFusion/blob/main/figures/lefusion_model.png)
 
-## Data Preparation
+## :bookmark_tabs:Data Preparation
 
 We utilized the LIDC dataset ([PubMed](https://pubmed.ncbi.nlm.nih.gov/21452728/#:~:text=Methods)), which includes 1,010 chest CT scans. From these, we extracted 2,624 pathology regions of interest (ROIs) related to lung nodules to train the LeFusion Model. The dataset is divided into 808 cases for training, containing 2,104 lung nodule ROIs, and 202 cases for testing, containing 520 lung nodule ROIs. This portion of the dataset is located in `LIDC-IDRI\Pathological`, with the `test.txt` listing the data used for testing.
 
@@ -32,20 +32,20 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
             └── Mask_3
 ```
 
-## Installation
+## :nut_and_bolt: Installation
 
-1. Create a virtual environment `conda create -n lefusion python=3.8.19` and activate it `conda activate medsam`
-2. Download the code`git clone https://github.com/YuheLiuu/LeFusion.git`
-3. Check if your pip version is 23.3.1. If it is not, install pip version 23.3.1`pip install pip==23.3.1`
+1. Create a virtual environment `conda create -n lefusion python=3.10` and activate it `conda activate lefusion`
+2. Download the code`git clone https://github.com/M3DV/LeFusion.git`
+3. Check if your pip version is 22.3.1. If it is not, install pip version 22.3.1 `pip install pip==22.3.1`
 4. Enter the LeFusion folder `cd LeFusion/LeFusion_LIDC` and run `pip install -r requirements.txt`
 
-## Get Started
+## :bulb:Get Started
 
 1. Download the LIDC_IDRI dataset ([HuggingFace🤗](https://huggingface.co/datasets/YuheLiuu/LIDC-IDRI/tree/main))
 
-   In our study, the LeFusion Model focuses on the generation of lung nodule regions.If you want to train a Diffusion Model to synthesize lung nodules, you can use the LIDC-IDRI dataset that has already been processed by us to train the LeFusion Model. Just put the LIDC-IDRI dataset to `LeFusion/LeFusion_LIDC/data`
+   In our study, the LeFusion Model focuses on the generation of lung nodule regions.If you want to train a Diffusion Model to synthesize lung nodules, you can use the LIDC-IDRI dataset that has already been processed by us to train the LeFusion Model. Just put the LIDC-IDRI dataset to `LeFusion/LeFusion_LIDC/data`.
 
-   **Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder.
+   > ✨**Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder. 
 
    ```bash
    cd data
@@ -70,11 +70,11 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
 
    If you have downloaded the pre-trained model, you can skip the training step and proceed directly to inference!
 
-## Train LeFusion Model
+## :microscope:Train LeFusion Model
 
 Start training:
 
-**Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder.
+> ✨**Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder.
 
 ```bash
 test_txt_dir=data/LIDC-IDRI/Pathological/test.txt
@@ -85,13 +85,13 @@ python train/train.py dataset.test_txt_dir=$test_txt_dir dataset.root_dir=$datas
 
 Notably, `data_path` actually refers to the directory location of the corresponding images. Additionally, the corresponding label directory should be placed in the same folder as the image directory and should be named `Mask`.
 
-Our model was trained for 50,000 steps using five 40GB A100 GPUs, taking two and a half days. However, we found that the model performs very well after 20,000 steps. Therefore, when training a model on your own, anywhere between 20,000 to 50,000 steps would yield good results. Additionally, by default, we save the weights every 1,000 steps, and you can modify the relevant parameters in `LeFusion/train/config`
+Our model was trained for 50,000 steps using five 40GB A100 GPUs, taking two and a half days. However, we found that the model performs very well after 20,000 steps. Therefore, when training a model on your own, anywhere between 20,000 to 50,000 steps would yield good results. Additionally, by default, we save the weights every 1,000 steps, and you can modify the relevant parameters in `LeFusion/train/config`.
 
-## Inference
+## :chart_with_upwards_trend:Inference
 
 Start inference:
 
-**Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder.
+> ✨**Note**: Before running the following command, make sure you are inside the `LeFusion/LeFusion_LIDC` folder.
 
 ```bash
 test_txt_dir=data/LIDC-IDRI/Pathological/test.txt
@@ -105,7 +105,12 @@ python test/inference.py test_txt_dir=$test_txt_dir dataset_root_dir=$dataset_ro
 
 Three folders, Image_1, Image_2, and Image_3, will be generated under the` target_img_path` directory, each representing images generated under the control of hist_1, hist_2, and hist_3 respectively. Similarly, three folders will be generated under the Mask directory, but unlike the Image folders, files with the same name in each of the three Mask folders contain the same mask.
 
-For *jump_length* and *jump_n_sample*, larger values generally result in longer image generation times. We found that when these two parameters are between 2 and 10, the generated images maintain good quality. When both parameters are set to 2, it takes about 40 seconds to generate an image using a 40G A100 GPU
+For *jump_length* and *jump_n_sample*, larger values generally result in longer image generation times. We found that when these two parameters are between 2 and 10, the generated images maintain good quality. When both parameters are set to 2, it takes about 40 seconds to generate an image using a 40G A100 GPU.
+
+## :mag_right:Visualization
+
+![visualization](https://github.com/M3DV/LeFusion/blob/main/figures/visualization.jpg)
+The first image is a healthy image from `LIDC-IDRI/Normal`. The second image is the corresponding generated mask, where lesions will be generated in the areas marked by the mask. Image_1, Image_2, and Image_3 are the lesions generated when the control information is set to Hist_1, Hist_2, and Hist_3, respectively.
 
 ## Citation
 
@@ -120,11 +125,11 @@ For *jump_length* and *jump_n_sample*, larger values generally result in longer 
       url={https://arxiv.org/abs/2403.14066}, 
 }
 ```
-## Visualization
-![visualization](https://github.com/M3DV/LeFusion/blob/main/figures/visualization.jpg)
-The first image is a healthy image from `LIDC-IDRI/Normal`. The second image is the corresponding generated mask, where lesions will be generated in the areas marked by the mask. Image_1, Image_2, and Image_3 are the lesions generated when the control information is set to Hist_1, Hist_2, and Hist_3, respectively.
+
 ## Acknowledgement
+
 Some of our code is modified based on [medicaldiffusion](https://github.com/FirasGit/medicaldiffusion) and [RePaint](https://github.com/andreas128/RePaint), and we greatly appreciate the efforts of the respective authors for providing open-source code. We also thank [DiffTumor](https://github.com/MrGiovanni/DiffTumor/tree/main/STEP3.SegmentationModel) for providing the segmentation model code.
+
 ## ToDo List
 
 ✅ **The preprocessed LIDC-IDRI dataset**  🚀
