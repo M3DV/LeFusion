@@ -67,6 +67,7 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
 
    ```bash
    cd ..
+   mkdir LeFusion_model
    cd LeFusion_model
    wget https://huggingface.co/YuheLiuu/LeFusion/resolve/main/LIDC_LeFusion_Model/model-50.pt -O model-50.pt
    ```
