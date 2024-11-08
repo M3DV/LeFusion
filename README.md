@@ -4,6 +4,7 @@ LeFusion: Lesion-Focused Diffusion Model. The top illustrates the training proce
 
 ![lefusion_model](https://github.com/M3DV/LeFusion/blob/main/figures/lefusion_model.png)
 
+
 ## :bookmark_tabs:Data Preparation
 
 We utilized the LIDC dataset ([PubMed](https://pubmed.ncbi.nlm.nih.gov/21452728/#:~:text=Methods)), which includes 1,010 chest CT scans. From these, we extracted 2,624 pathology regions of interest (ROIs) related to lung nodules to train the LeFusion Model. The dataset is divided into 808 cases for training, containing 2,104 lung nodule ROIs, and 202 cases for testing, containing 520 lung nodule ROIs. This portion of the dataset is located in `LIDC-IDRI\Pathological`, with the `test.txt` listing the data used for testing.
@@ -133,6 +134,13 @@ The first image is a healthy image from `LIDC-IDRI/Normal`. The second image is 
 ## Acknowledgement
 
 Some of our code is modified based on [medicaldiffusion](https://github.com/FirasGit/medicaldiffusion) and [RePaint](https://github.com/andreas128/RePaint), and we greatly appreciate the efforts of the respective authors for providing open-source code. We also thank [DiffTumor](https://github.com/MrGiovanni/DiffTumor/tree/main/STEP3.SegmentationModel) for providing the segmentation model code.
+
+
+## Community Contribution: [3D Slicer Extension for LeFusion](https://github.com/pedr0sorio/lefusion-slicer)
+
+For those who work with medical imaging and seek to bring LeFusion's inpainting model closer to real-world clinical practice, we are excited to introduce a community contribution: a [3D Slicer extension](https://github.com/pedr0sorio/lefusion-slicer)! This extension leverages our inpainting model as the backend, offering practical applications for radiologists and other medical professionals. 
+
+Special thanks to [@pedr0sorio](https://github.com/pedr0sorio) for developing this valuable tool.
 
 ## ToDo List
 
