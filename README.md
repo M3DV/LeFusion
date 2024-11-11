@@ -153,3 +153,8 @@ Special thanks to [@pedr0sorio](https://github.com/pedr0sorio) for developing th
 🔲 **The preprocessed EMIDC dataset**  
 
 🔲 **The LeFusion model applied to EMIDC**  
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=M3DV/LeFusion&type=Date)](https://star-history.com/#M3DV/LeFusion&Date)
