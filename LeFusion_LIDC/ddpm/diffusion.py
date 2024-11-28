@@ -773,7 +773,7 @@ class GaussianDiffusion_Nolatent(nn.Module):
                 time_pairs = tqdm(time_pairs)
             for t_last, t_cur in time_pairs:
                 idx_wall += 1
-                t_last_t = t_last * shape[0]
+                t_last_t = t_last
                 if t_cur < t_last: 
                     with (torch.no_grad()):
                         b = shape[0]

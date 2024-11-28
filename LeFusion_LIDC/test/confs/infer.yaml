@@ -2,6 +2,7 @@ diffusion_img_size: 64
 diffusion_depth_size: 48
 diffusion_num_channels: 1
 dim_mults: [1,2,4,8]
+batch_size: 3
 
 test_txt_dir: ???
 dataset_root_dir: ???

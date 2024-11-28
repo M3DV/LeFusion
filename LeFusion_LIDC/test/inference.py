@@ -85,9 +85,7 @@ def main(conf: DictConfig):
 
     print("sampling...")
 
-    dl = get_inference_dataloader(dataset_root_dir=conf.dataset_root_dir, test_txt_dir=conf.test_txt_dir)  
-    print("length of dataset:", len(dl))
-
+    dl = get_inference_dataloader(dataset_root_dir=conf.dataset_root_dir, test_txt_dir=conf.test_txt_dir, batch_size=conf.batch_size)  
     
     idx = 0
     types = 3
@@ -103,19 +101,14 @@ def main(conf: DictConfig):
                     batch[k] = batch[k].to(device)
             model_kwargs = {}
             model_kwargs["gt"] = batch['GT']
-            gt_name = batch['GT_name'][0]
-            name_part, extension = gt_name.rsplit('.nii.gz', 1)
-            gt_name = f"{name_part}.nii.gz"
             gt_keep_mask = batch.get('gt_keep_mask')
             if gt_keep_mask is not None:
                 model_kwargs['gt_keep_mask'] = gt_keep_mask
-
             batch_size = model_kwargs["gt"].shape[0]
-
 
             sample_fn = diffusion.p_sample_loop_repaint
 
-            result = sample_fn(
+            output = sample_fn(
                 shape = (batch_size, 1, 32, 64, 64),
                 model_kwargs=model_kwargs,
                 device=device,
@@ -124,30 +117,25 @@ def main(conf: DictConfig):
                 cond=hist
             )
 
-            result = result.squeeze(0).cpu()
-
-
-            restore_affine = batch['affine'].squeeze(0).cpu()
-
-
-            origin_image = tio.ScalarImage(tensor=result, channels_last=False, affine=restore_affine)
-            
             image_fold = f"Image_{type+1}"
-            os.makedirs(os.path.join(conf.target_img_path, image_fold), exist_ok=True)
-            origin_image.save(os.path.join(conf.target_img_path, image_fold, gt_name))
-
-            label = batch.get('gt_keep_mask').squeeze(0).cpu()
-
-
-            name_part, extension = gt_name.rsplit('.nii.gz', 1)[0], '.nii.gz'
-
-            main_name, vol_part = name_part.rsplit('_CVol_', 1)
-            mask_name = f"{main_name}_Mask_{vol_part}{extension}"
-
-            label = tio.LabelMap(tensor=label, channels_last=False, affine=restore_affine)
             label_fold = f"Mask_{type+1}"
+            os.makedirs(os.path.join(conf.target_img_path, image_fold), exist_ok=True)
             os.makedirs(os.path.join(conf.target_label_path, label_fold), exist_ok=True)
-            label.save(os.path.join(conf.target_label_path, label_fold, mask_name))
+
+
+            for i in range(batch_size):
+                result = output[i, :, :, :, :].cpu()
+                restore_affine = batch['affine'][i].squeeze(0).cpu()
+                gt_name = batch['GT_name'][i]
+                name_part, extension = gt_name.rsplit('.nii.gz', 1)[0], '.nii.gz'
+                main_name, vol_part = name_part.rsplit('_CVol_', 1)
+                mask_name = f"{main_name}_Mask_{vol_part}{extension}"
+                gen_image = tio.ScalarImage(tensor=result, channels_last=False, affine=restore_affine)
+                gen_image.save(os.path.join(conf.target_img_path, image_fold, gt_name))
+                label = batch['gt_keep_mask'][i].cpu()
+                label = tio.LabelMap(tensor=label, channels_last=False, affine=restore_affine)
+                label.save(os.path.join(conf.target_label_path, label_fold, mask_name))
+            
 
         idx += 1
 
