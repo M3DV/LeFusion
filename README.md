@@ -105,7 +105,8 @@ target_img_path=data/LIDC-IDRI/gen/Image/
 target_label_path=data/LIDC-IDRI/gen/Mask/
 jump_length=5
 jump_n_sample=5
-python test/inference.py test_txt_dir=$test_txt_dir dataset_root_dir=$dataset_root_dir target_img_path=$target_img_path target_label_path=$target_label_path schedule_jump_params.jump_length=$jump_length schedule_jump_params.jump_n_sample=$jump_n_sample
+batch_size=2
+python test/inference.py batch_size=$batch_size test_txt_dir=$test_txt_dir dataset_root_dir=$dataset_root_dir target_img_path=$target_img_path target_label_path=$target_label_path schedule_jump_params.jump_length=$jump_length schedule_jump_params.jump_n_sample=$jump_n_sample
 ```
 
 Three folders, Image_1, Image_2, and Image_3, will be generated under the` target_img_path` directory, each representing images generated under the control of hist_1, hist_2, and hist_3 respectively. Similarly, three folders will be generated under the Mask directory, but unlike the Image folders, files with the same name in each of the three Mask folders contain the same mask.
