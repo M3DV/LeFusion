@@ -1,0 +1,30 @@
+data_type=lidc
+types=3
+diffusion_img_size=64
+diffusion_depth_siz=32
+diffusion_num_channels=1
+batch_size=3
+test_txt_dir=data/LIDC/Pathological/test.txt
+dataset_root_dir=data/LIDC/Normal/Image/
+target_img_path=data/LIDC/gen/Image/
+target_label_path=data/LIDC/gen/Mask/
+model_path=LeFusion/LeFusion_Model/LIDC/model-50.pt
+jump_length=5
+jump_n_sample=5
+cond_dim=16
+
+python LeFusion/test/inference.py \
+    data_type=$data_type \
+    types=$types\
+    diffusion_img_size=$diffusion_img_size \
+    diffusion_depth_size=$diffusion_depth_siz \
+    diffusion_num_channels=$diffusion_num_channels \
+    batch_size=$batch_size \
+    test_txt_dir=$test_txt_dir \
+    dataset_root_dir=$dataset_root_dir \
+    target_img_path=$target_img_path \
+    target_label_path=$target_label_path \
+    schedule_jump_params.jump_length=$jump_length \
+    schedule_jump_params.jump_n_sample=$jump_n_sample \
+    cond_dim=$cond_dim \
+    model_path=$model_path \

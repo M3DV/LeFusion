@@ -1,0 +1,9 @@
+- dataset=emidec
+- model.diffusion_img_size=72
+- model.diffusion_depth_size=10
+- model.diffusion_num_channels=2
+- model.batch_size=batch_size
+- dataset.root_dir=data/LIDC-IDRI/Pathological
+- model.train_num_steps=50001
+- model.cond_dim=32
+- model.results_folder=LeFusion_model/EMIDEC

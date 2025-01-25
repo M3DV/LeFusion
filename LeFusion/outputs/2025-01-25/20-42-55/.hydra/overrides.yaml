@@ -1,0 +1,14 @@
+- data_type=lidc
+- types=3
+- diffusion_img_size=64
+- diffusion_depth_size=32
+- diffusion_num_channels=1
+- batch_size=3
+- test_txt_dir=data/LIDC/Pathological/test.txt
+- dataset_root_dir=data/LIDC/Normal/Image/
+- target_img_path=data/LIDC/gen/Image/
+- target_label_path=data/LIDC/gen/Mask/
+- schedule_jump_params.jump_length=5
+- schedule_jump_params.jump_n_sample=5
+- cond_dim=16
+- model_path=LeFusion_Model/LIDC/model-50.pt

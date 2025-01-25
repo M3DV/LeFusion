@@ -1,0 +1,12 @@
+- data_type=lidc
+- types=1
+- diffusion_img_size=72
+- diffusion_depth_size=10
+- diffusion_num_channels=2
+- batch_size=3
+- dataset_root_dir=data/EMIDEC/Pathological/images/
+- target_img_path=data/EMIDEC/gen/Image/
+- target_label_path=data/EMIDEC/gen/Mask/
+- schedule_jump_params.jump_length=5
+- schedule_jump_params.jump_n_sample=5
+- model_path=LeFusion_Model/EMIDEC/model-23.pt
