@@ -18,5 +18,5 @@ python LeFusion/train/train.py \
     model.train_num_steps=$train_num_steps \
     model.cond_dim=$cond_dim \
     model.results_folder=$results_folder \
-    batch_size=$batch_size \
+    model.batch_size=$batch_size \
 

@@ -820,7 +820,7 @@ class GaussianDiffusion_Nolatent(nn.Module):
 
     def p_losses(self, x_start, t, mask, cond=None, noise=None, **kwargs):
         device = x_start.device
-        # x_start = x_start.to(device=device, dtype=torch.float32)
+        x_start = x_start.to(device=device, dtype=torch.float32)
         noise = default(noise, lambda: torch.randn_like(x_start))
         x_noisy = self.q_sample(x_start=x_start, t=t, noise=noise)
         if is_list_str(cond):

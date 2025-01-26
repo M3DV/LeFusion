@@ -24,7 +24,8 @@ python LeFusion/inference/inference.py \
     schedule_jump_params.jump_length=$jump_length \
     schedule_jump_params.jump_n_sample=$jump_n_sample \
     model_path=$model_path \
-    cond_dim=$cond_dim
+    cond_dim=$cond_dim \
+    batch_size=$batch_size
 
 
 
