@@ -36,7 +36,7 @@ Furthermore, we provide pre-generated images with lesions based on the `LIDC-IDR
 Besides, we provide the preprocessed EMIDEC dataset ([MDPI](https://www.mdpi.com/2306-5729/5/4/89)), which contains 57 pathology MRI scans and 43 healthy MRI scans.
 
 ```
-├── LIDC-IDRI
+├── EMIDEC
     ├── Pathological
     │   ├── images
     │   ├── labels
@@ -199,8 +199,8 @@ Special thanks to [@pedr0sorio](https://github.com/pedr0sorio) for developing th
 
 ✅ **The LeFusion model applied to LIDC-IDRI** 🚀
 
-🔲 **The DiffMask model used for generating mask** 
+✅ **The DiffMask model used for generating mask** 🚀
 
-🔲 **The preprocessed EMIDC dataset**  
+✅ **The preprocessed EMIDC dataset**  🚀
 
-🔲 **The LeFusion model applied to EMIDC**  
+✅ **The LeFusion model applied to EMIDC**  🚀
