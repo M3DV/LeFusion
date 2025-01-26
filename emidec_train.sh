@@ -8,7 +8,7 @@ train_num_steps=50001
 cond_dim=32
 results_folder=LeFusion/LeFusion_Model/EMIDEC
 
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python LeFusion/train/train.py \
+python LeFusion/train/train.py \
     dataset=$dataset \
     model.diffusion_img_size=$diffusion_img_size \
     model.diffusion_depth_size=$diffusion_depth_size \
@@ -18,3 +18,5 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python LeFusion/train/train.py \
     model.train_num_steps=$train_num_steps \
     model.cond_dim=$cond_dim \
     model.results_folder=$results_folder \
+    batch_size=$batch_size \
+

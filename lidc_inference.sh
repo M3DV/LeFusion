@@ -8,12 +8,12 @@ test_txt_dir=data/LIDC/Pathological/test.txt
 dataset_root_dir=data/LIDC/Normal/Image/
 target_img_path=data/LIDC/gen/Image/
 target_label_path=data/LIDC/gen/Mask/
-model_path=LeFusion/LeFusion_Model/LIDC/model-50.pt
+model_path=LeFusion/LeFusion_Model/LIDC/lidc.pt
 jump_length=5
 jump_n_sample=5
 cond_dim=16
 
-python LeFusion/test/inference.py \
+python LeFusion/inference/inference.py \
     data_type=$data_type \
     types=$types\
     diffusion_img_size=$diffusion_img_size \
