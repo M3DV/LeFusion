@@ -201,6 +201,6 @@ Special thanks to [@pedr0sorio](https://github.com/pedr0sorio) for developing th
 
 ✅ **The DiffMask model used for generating mask** 🚀
 
-✅ **The preprocessed EMIDC dataset**  🚀
+✅ **The preprocessed EMIDEC dataset**  🚀
 
-✅ **The LeFusion model applied to EMIDC**  🚀
+✅ **The LeFusion model applied to EMIDEC**  🚀
