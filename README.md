@@ -155,6 +155,16 @@ The first image is a healthy image from `LIDC-IDRI/Normal`. The second image is 
 
 The training and inference process of DiffMask is as follows.
 
+Get pre-trained DiffMask Model([HuggingFace🤗](https://huggingface.co/YuheLiuu/LeFusion_Pretrained_model/tree/main)):
+
+```bash
+cd DiffMask
+mkdir DiffMask_Model
+cd DiffMask_Model
+wget https://huggingface.co/YuheLiuu/LeFusion_Pretrained_model/resolve/main/diffmask.pt -O diffmask.pt
+cd ../..
+```
+
 Train:
 
 ```bash
