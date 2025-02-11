@@ -1,6 +1,6 @@
 # LeFusion: Lesion-Focused Diffusion Model
 
-LeFusion is now accepted by [ICLR'25](https://openreview.net/forum?id=3b9SKkRAKw) with high reviewer scores (8888).
+LeFusion has been accepted by [ICLR'25](https://openreview.net/forum?id=3b9SKkRAKw) with high reviewer scores (8888) and selected for a Spotlight presentation.
 
 ![lefusion_model](https://github.com/M3DV/LeFusion/blob/main/figures/lefusion_model.png)
 
